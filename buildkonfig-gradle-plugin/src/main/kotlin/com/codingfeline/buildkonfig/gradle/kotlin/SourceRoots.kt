@@ -24,10 +24,7 @@ internal fun KotlinMultiplatformExtension.sources(): List<Source> {
                                 .first { it.name == "${target.name}Main" }
 
                             val all = compilation.allKotlinSourceSets
-                                .filter {
-                                    it.name != "${target.name}Main" &&
-                                            it.name != compilation.defaultSourceSet.name
-                                }
+                                .filter { it != default }
 
                             default to all
                         }

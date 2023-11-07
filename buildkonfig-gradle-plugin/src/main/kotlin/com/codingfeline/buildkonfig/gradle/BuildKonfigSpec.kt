@@ -106,12 +106,12 @@ fun mergeTargetConfigs(
     val defaultTargetConfigs = targetConfigs
         .getOrDefault(DEFAULT_FLAVOR, emptyList())
         // convert to Map<name, TargetConfig>
-        .associateBy { "${it.name}Main" }
+        .associateBy { it.name }
 
     val flavoredConfigs = if (flavor != DEFAULT_FLAVOR) {
         targetConfigs.getOrDefault(flavor, emptyList())
             // convert to Map<name, TargetConfig>
-            .associateBy { "${it.name}Main" }
+            .associateBy { it.name }
     } else {
         // we don't want to merge the same configs
         emptyMap()
